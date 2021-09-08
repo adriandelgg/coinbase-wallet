@@ -2,7 +2,6 @@ require('@nomiclabs/hardhat-ethers');
 require('@nomiclabs/hardhat-waffle');
 require('@nomiclabs/hardhat-solhint');
 require('solidity-coverage');
-require('hardhat-gas-reporter');
 require('dotenv').config();
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
@@ -19,12 +18,6 @@ task('accounts', 'Prints the list of accounts', async (taskArgs, hre) => {
  */
 module.exports = {
 	defaultNetwork: 'localhost',
-	gasReporter: {
-		currency: 'USD',
-		enabled: process.env.REPORT_GAS ? true : false,
-		excludeContracts: [],
-		src: './contracts'
-	},
 	networks: {
 		rinkeby: {
 			url: process.env.INFURA_RINKEBY_KEY,
