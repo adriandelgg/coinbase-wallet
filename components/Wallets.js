@@ -1,12 +1,13 @@
 import { useWeb3React } from '@web3-react/core';
-import connectors from './connectors';
+import { connectors } from './connectors';
 import useContract from './hooks/useContract';
 
-// Only show wallet connection when
+// Only show wallet connection when initialize connection.
 
 const Wallets = () => {
 	const { activate } = useWeb3React();
 	const contract = useContract();
+
 	// Use this console.log to view all the properties of the context
 	// console.log(useWeb3React());
 
@@ -15,10 +16,10 @@ const Wallets = () => {
 
 		return (
 			<button
+				key={name}
 				onClick={() => {
 					activate(currentConnector);
 				}}
-				key={name}
 			>
 				{name}
 			</button>

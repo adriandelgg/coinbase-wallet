@@ -11,6 +11,7 @@ const RPC_URLS = {
 	42: process.env.NEXT_PUBLIC_KOVAN_API_KEY
 };
 
+// Add the chain ID # if you'd like to test other chains
 export const injected = new InjectedConnector({
 	supportedChainIds: [1, 3, 4, 5, 42, 31337]
 });
@@ -23,14 +24,12 @@ export const walletconnect = new WalletConnectConnector({
 });
 
 export const walletlink = new WalletLinkConnector({
-	url: RPC_URLS[4],
+	url: RPC_URLS[1],
 	appName: 'Climate DAO'
 });
 
-const connectors = {
-	Injected: injected,
+export const connectors = {
+	MetaMask: injected,
 	WalletConnect: walletconnect,
 	WalletLink: walletlink
 };
-
-export default connectors;
