@@ -2,6 +2,8 @@ import { useWeb3React } from '@web3-react/core';
 import connectors from './connectors';
 import useContract from './hooks/useContract';
 
+// Only show wallet connection when
+
 const Wallets = () => {
 	const { activate } = useWeb3React();
 	const contract = useContract();
