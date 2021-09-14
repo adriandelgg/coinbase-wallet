@@ -19,7 +19,7 @@ const useContract = () => {
 					contractAddress = '';
 					break;
 				case 4: // Rinkeby
-					contractAddress = '0x964348dE4Ef406F1913a6745BF43f4AEBFf5b58C';
+					contractAddress = '0x1D1B9596a1079b1f2fEc8F03309304FDc2ce7ae0';
 					break;
 				case 5: // Goerli
 					contractAddress = '';
@@ -39,7 +39,7 @@ const useContract = () => {
 				return null;
 			}
 		}
-	}, [chainId, account, library]);
+	}, [chainId, account, library, active]);
 };
 
 export default useContract;
