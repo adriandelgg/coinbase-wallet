@@ -23,22 +23,30 @@ const CoinBase = () => {
 			// '0x9977593c73566afE015BEfF0a3ea06Cf521763D8'
 			account
 		);
-		console.log(signer);
+
+		// const result = await signer.provider.send('personal_sign', ['hi']);
+		// console.log(result);
+
+		// console.log(signer);
 		const signerAddress = await signer.getAddress();
 		console.log(signerAddress);
-		const coinbaseAddress = '0x9977593c73566afE015BEfF0a3ea06Cf521763D8';
-		console.log(signerAddress === coinbaseAddress);
+
+		const data = ethers.utils.toUtf8Bytes('hi');
+		const signature = await provider.send('personal_sign', [
+			ethers.utils.hexlify(data),
+			signerAddress.toLowerCase()
+		]);
 
 		try {
-			// const messageBytes = ethers.utils.arrayify('hi');
-			const signature = await signer.signMessage('hi');
-			console.log(signature);
 			const address = verifyMessage('hi', signature);
-			// const addressBytes = verifyMessage(messageBytes, signature);
 			console.log(address);
+			const address2 = verifyMessage(data, signature);
+
+			// const addressBytes = verifyMessage(messageBytes, signature);
 			// console.log(addressBytes);
 
 			console.log(address.toLowerCase() === signerAddress.toLowerCase());
+			console.log(address2.toLowerCase() === signerAddress.toLowerCase());
 			// console.log(addressBytes.toLowerCase() === signerAddress.toLowerCase());
 		} catch (e) {
 			console.log(e);
